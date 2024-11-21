@@ -29,6 +29,7 @@ class ChameleonGame:
                    chameleon: LLMType, player_order: List[LLMType]) -> GameRound:
         print(f"Secret word: {word}")
         print(f"Chameleon: {chameleon.player_name}")
+
         
         turns = []
         previous_hints = []
@@ -79,13 +80,16 @@ class ChameleonGame:
             
             tie_break_votes = {}
             for player in player_order:
-                if player != chameleon:  # Chameleon doesn't vote in tie-break
-                    vote = self.llm_handler.get_tie_break_vote(
-                        player, category, [(t.player, t.hint) for t in turns],
-                        word, most_voted
-                    )
-                    tie_break_votes[player] = vote
-                    print(f"{player.player_name} votes for: {vote.player_name}")
+                vote = self.llm_handler.get_tie_break_vote(
+                    player, 
+                    category, 
+                    [(t.player, t.hint) for t in turns],
+                    word, 
+                    most_voted,
+                    is_chameleon=(player == chameleon)
+                )
+                tie_break_votes[player] = vote
+                print(f"{player.player_name} votes for: {vote.player_name}")
             
             # Count tie-break votes
             tie_vote_counts = {}

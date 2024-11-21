@@ -28,15 +28,5 @@ def main():
     
     print(f"\n\nGame complete! Statistics have been saved to {stats_file}")
     
-    # Print a brief summary to terminal
-    print("\nQuick Summary:")
-    print("-" * 50)
-    for player, stats in stats_output.items():
-        print(f"\n{player}:")
-        print(f"Times as Chameleon: {stats['times_as_chameleon']}")
-        print(f"Times Identified: {stats['times_identified']}")
-        print(f"Correct Guesses: {stats['correct_guesses']}")
-        print(f"Correct Votes: {stats['correct_votes']}")
-
 if __name__ == "__main__":
     main() 

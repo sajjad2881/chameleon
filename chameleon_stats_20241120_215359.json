@@ -1,0 +1,47 @@
+{
+    "Alice": {
+        "times_as_chameleon": 6,
+        "times_identified": 2,
+        "correct_guesses": 0,
+        "correct_votes": 10,
+        "identification_rate": "33.3%",
+        "guess_success_rate": "0.0%",
+        "voting_accuracy": "N/A"
+    },
+    "Bob": { 
+        "times_as_chameleon": 6,
+        "times_identified": 3,
+        "correct_guesses": 0,
+        "correct_votes": 5,
+        "identification_rate": "50.0%",
+        "guess_success_rate": "0.0%",
+        "voting_accuracy": "N/A"
+    },
+    "Charlie": { 
+        "times_as_chameleon": 1,
+        "times_identified": 0,
+        "correct_guesses": 0,
+        "correct_votes": 18,
+        "identification_rate": "0.0%",
+        "guess_success_rate": "N/A",
+        "voting_accuracy": "450.0%"
+    },
+    "David": { 
+        "times_as_chameleon": 13,
+        "times_identified": 0,
+        "correct_guesses": 0,
+        "correct_votes": 7,
+        "identification_rate": "0.0%",
+        "guess_success_rate": "N/A",
+        "voting_accuracy": "N/A"
+    },
+    "Eve": { 
+        "times_as_chameleon": 6,
+        "times_identified": 0,
+        "correct_guesses": 0,
+        "correct_votes": 4,
+        "identification_rate": "0.0%",
+        "guess_success_rate": "N/A",
+        "voting_accuracy": "N/A"
+    }
+}

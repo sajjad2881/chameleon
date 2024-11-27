@@ -1,0 +1,470 @@
+[
+  {
+    "timestamp": "2024-11-26T18:12:39.792828",
+    "category": "Movies",
+    "word": "Pulp Fiction",
+    "chameleon": "Eve",
+    "player_hints": [
+      {
+        "Alice": "Dialogue"
+      },
+      {
+        "Charlie": "Briefcase"
+      },
+      {
+        "Eve": "Action"
+      },
+      {
+        "Bob": "Royale"
+      },
+      {
+        "David": "Cool"
+      }
+    ],
+    "initial_votes": {
+      "Alice": "Charlie",
+      "Charlie": "Eve",
+      "Eve": "Bob",
+      "Bob": "Eve",
+      "David": "Eve"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Eve",
+    "chameleon_guess": "Action",
+    "winner": null,
+    "was_chameleon_caught": true,
+    "did_chameleon_guess_correctly": false
+  },
+  {
+    "timestamp": "2024-11-26T18:13:25.177151",
+    "category": "Animals",
+    "word": "Rabbit",
+    "chameleon": "David",
+    "player_hints": [
+      {
+        "Alice": "Hoppy"
+      },
+      {
+        "Eve": "Cottontail"
+      },
+      {
+        "David": "Ears"
+      },
+      {
+        "Bob": "Carrot"
+      },
+      {
+        "Charlie": "Burrow"
+      }
+    ],
+    "initial_votes": {
+      "Alice": "Bob",
+      "Eve": "Bob",
+      "David": "Charlie",
+      "Bob": "David",
+      "Charlie": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Bob",
+    "chameleon_guess": "Rabbit",
+    "winner": "David",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:13:49.435257",
+    "category": "Cities",
+    "word": "Paris",
+    "chameleon": "Charlie",
+    "player_hints": [
+      {
+        "David": "Eiffel"
+      },
+      {
+        "Alice": "Chic"
+      },
+      {
+        "Charlie": "Fashion"
+      },
+      {
+        "Bob": "Louvre"
+      },
+      {
+        "Eve": "Romance"
+      }
+    ],
+    "initial_votes": {
+      "David": "Charlie",
+      "Alice": "Eve",
+      "Charlie": "Eve",
+      "Bob": "Eve",
+      "Eve": "Bob"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Eve",
+    "chameleon_guess": "Paris",
+    "winner": "Charlie",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:14:11.448064",
+    "category": "Fruits",
+    "word": "Watermelon",
+    "chameleon": "Charlie",
+    "player_hints": [
+      {
+        "Bob": "Melon"
+      },
+      {
+        "David": "Green"
+      },
+      {
+        "Eve": "Summer"
+      },
+      {
+        "Charlie": "Sweet"
+      },
+      {
+        "Alice": "Juicy"
+      }
+    ],
+    "initial_votes": {
+      "Bob": "Bob",
+      "David": "Charlie",
+      "Eve": "David",
+      "Charlie": "David",
+      "Alice": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "David",
+    "chameleon_guess": "Watermelon",
+    "winner": "Charlie",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:14:38.079969",
+    "category": "Games",
+    "word": "Super Mario Bros",
+    "chameleon": "Bob",
+    "player_hints": [
+      {
+        "Bob": "Console"
+      },
+      {
+        "Charlie": "Platformer"
+      },
+      {
+        "Alice": "Mushrooms"
+      },
+      {
+        "David": "Plumber"
+      },
+      {
+        "Eve": "Nintendo"
+      }
+    ],
+    "initial_votes": {
+      "Bob": "Bob",
+      "Charlie": "Bob",
+      "Alice": "Bob",
+      "David": "Charlie",
+      "Eve": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Bob",
+    "chameleon_guess": "Super Mario Bros",
+    "winner": "Bob",
+    "was_chameleon_caught": true,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:14:59.495077",
+    "category": "Genres",
+    "word": "Rock",
+    "chameleon": "Eve",
+    "player_hints": [
+      {
+        "Eve": "Rhythm"
+      },
+      {
+        "Charlie": "Electric"
+      },
+      {
+        "Bob": "Guitar"
+      },
+      {
+        "Alice": "Chords"
+      },
+      {
+        "David": "Loud"
+      }
+    ],
+    "initial_votes": {
+      "Eve": "Alice",
+      "Charlie": "Eve",
+      "Bob": "Eve",
+      "Alice": "David",
+      "David": "Charlie"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Eve",
+    "chameleon_guess": "Rhythm",
+    "winner": null,
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": false
+  },
+  {
+    "timestamp": "2024-11-26T18:15:36.162614",
+    "category": "Jobs",
+    "word": "Artist",
+    "chameleon": "David",
+    "player_hints": [
+      {
+        "David": "Skilled"
+      },
+      {
+        "Bob": "Creative"
+      },
+      {
+        "Eve": "Imaginative"
+      },
+      {
+        "Charlie": "Canvas"
+      },
+      {
+        "Alice": "Palette"
+      }
+    ],
+    "initial_votes": {
+      "David": "Bob",
+      "Bob": "David",
+      "Eve": "Charlie",
+      "Charlie": "David",
+      "Alice": "Charlie"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "David",
+    "chameleon_guess": "Artist",
+    "winner": "David",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:16:16.567605",
+    "category": "Heroes",
+    "word": "Black Widow",
+    "chameleon": "Bob",
+    "player_hints": [
+      {
+        "David": "Crimson"
+      },
+      {
+        "Alice": "Assassin"
+      },
+      {
+        "Charlie": "Russian"
+      },
+      {
+        "Eve": "Spy"
+      },
+      {
+        "Bob": "Strength"
+      }
+    ],
+    "initial_votes": {
+      "David": "Alice",
+      "Alice": "Bob",
+      "Charlie": "Bob",
+      "Eve": "Alice",
+      "Bob": "Bob"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Bob",
+    "chameleon_guess": "Black Widow",
+    "winner": "Bob",
+    "was_chameleon_caught": true,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:16:37.977923",
+    "category": "Sports",
+    "word": "Athletics",
+    "chameleon": "Charlie",
+    "player_hints": [
+      {
+        "David": "Track"
+      },
+      {
+        "Bob": "Olympic"
+      },
+      {
+        "Alice": "Events"
+      },
+      {
+        "Charlie": "Competition"
+      },
+      {
+        "Eve": "Running"
+      }
+    ],
+    "initial_votes": {
+      "David": "Charlie",
+      "Bob": "Alice",
+      "Alice": "Eve",
+      "Charlie": "Eve",
+      "Eve": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Eve",
+    "chameleon_guess": "Athletics",
+    "winner": "Charlie",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:17:06.961913",
+    "category": "Colors",
+    "word": "White",
+    "chameleon": "David",
+    "player_hints": [
+      {
+        "David": "Vibrant"
+      },
+      {
+        "Charlie": "Pure"
+      },
+      {
+        "Eve": "Bright"
+      },
+      {
+        "Alice": "Light"
+      },
+      {
+        "Bob": "Snow"
+      }
+    ],
+    "initial_votes": {
+      "David": "Bob",
+      "Charlie": "David",
+      "Eve": "Bob",
+      "Alice": "Bob",
+      "Bob": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Bob",
+    "chameleon_guess": "White",
+    "winner": "David",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:17:35.940114",
+    "category": "FastFood",
+    "word": "Burger King",
+    "chameleon": "Alice",
+    "player_hints": [
+      {
+        "Bob": "Crown"
+      },
+      {
+        "Charlie": "Whopper"
+      },
+      {
+        "David": "Flame-grilled"
+      },
+      {
+        "Alice": "Bun"
+      },
+      {
+        "Eve": "King"
+      }
+    ],
+    "initial_votes": {
+      "Bob": "Alice",
+      "Charlie": "Eve",
+      "David": "Charlie",
+      "Alice": "Alice",
+      "Eve": "Charlie"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Alice",
+    "chameleon_guess": "Burger King",
+    "winner": "Alice",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:18:11.782915",
+    "category": "Brands",
+    "word": "LEGO",
+    "chameleon": "David",
+    "player_hints": [
+      {
+        "Eve": "Blocks"
+      },
+      {
+        "Charlie": "Plastic"
+      },
+      {
+        "Bob": "Builder"
+      },
+      {
+        "David": "Toys"
+      },
+      {
+        "Alice": "Bricks"
+      }
+    ],
+    "initial_votes": {
+      "Eve": "Alice",
+      "Charlie": "Eve",
+      "Bob": "Charlie",
+      "David": "Charlie",
+      "Alice": "Eve"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Eve",
+    "chameleon_guess": "LEGO",
+    "winner": "David",
+    "was_chameleon_caught": false,
+    "did_chameleon_guess_correctly": true
+  },
+  {
+    "timestamp": "2024-11-26T18:18:31.263322",
+    "category": "SchoolSubjects",
+    "word": "Geography",
+    "chameleon": "Charlie",
+    "player_hints": [
+      {
+        "Alice": "Maps"
+      },
+      {
+        "Bob": "Globe"
+      },
+      {
+        "Eve": "Location"
+      },
+      {
+        "David": "Coordinates"
+      },
+      {
+        "Charlie": "Compass"
+      }
+    ],
+    "initial_votes": {
+      "Alice": "Charlie",
+      "Bob": "Charlie",
+      "Eve": "Bob",
+      "David": "Charlie",
+      "Charlie": "David"
+    },
+    "tie_break_votes": null,
+    "final_suspect": "Charlie",
+    "chameleon_guess": "Geography",
+    "winner": "Charlie",
+    "was_chameleon_caught": true,
+    "did_chameleon_guess_correctly": true
+  }
+]

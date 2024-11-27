@@ -7,7 +7,7 @@ from game_models import LLMType
 import random
 from pydantic import BaseModel
 
-SYSTEM_PROMPT = """You're an AI player in a game of Chameleon. A secret word will be chosen from a given category - only legitimate players know this word, while one player (the Chameleon) doesn't. When it's your turn, you must provide a single-word clue related to the secret word. Keep the entire set of possible words in mind when giving the clue. Your clue should be clever enough to prove you know the word, but vague enough that the Chameleon can't guess. If you are the Chameleon, give a clue such as to avoid detection. IN ALL CIRCUMSTANCES answer with one word only. Once the round is done, we will vote on the Chameleon. If you are the Chameleon, you win if you are not voted Chameleon. If you are not the Chameleon, you win if you correctly vote for the Chameleon and the majority agrees."""
+SYSTEM_PROMPT = """You're an AI player in a game of Chameleon. A secret word will be chosen from a given category - only legitimate players know this word, while one player (the Chameleon) doesn't. When it's your turn, you must provide a single-word clue related to the secret word in the context of the category and the rest of the possible words. Keep the entire set of possible words in mind when giving the clue. Your clue should be clever enough to prove to the other players that you know the word, but vague enough that the Chameleon can't guess the word from your hint. If you are the Chameleon, give a clue such as to avoid detection, so the other players don't vote you out. IN ALL CIRCUMSTANCES answer with one word only. Once the round is done, we will vote on the Chameleon. If you are the Chameleon, you win if you are not voted Chameleon. If you are not the Chameleon, you win if you correctly vote for the Chameleon and the majority agrees."""
 
 class Hint(BaseModel):
     hint: str
@@ -25,13 +25,13 @@ class LLMHandler:
         self.current_model = None  # Track current model
 
     def _sanitize_hint(self, hint_text: str, secret_word: str = None) -> str:
-        """Use OpenAI to ensure we get a single-word hint that isn't the secret word."""
+        """Ensure we get a single-word hint that isn't the secret word."""
         try:
             completion = self.openai_client.beta.chat.completions.parse(
                 model="gpt-4o-mini",
                 messages=[
-                    {"role": "system", "content": "Extract a one-word hint from the text. The hint cannot be the secret word itself."},
-                    {"role": "user", "content": f"Secret word: {secret_word}\nHint text: {hint_text}"},
+                    {"role": "system", "content": "Extract the player's one-word hint from the text. The hint cannot be the secret word itself."},
+                    {"role": "user", "content": f"Secret word: {secret_word}\n Hint text: {hint_text}"},
                 ],
                 response_format=Hint,
             )
@@ -45,7 +45,7 @@ class LLMHandler:
             return hint_text.strip().split()[0]  # Fallback to simple extraction
 
     def _sanitize_vote(self, vote_text: str) -> str:
-        """Use OpenAI to ensure we get a single player name."""
+        """Ensure we get a single player name in the vote."""
         try:
             completion = self.openai_client.beta.chat.completions.parse(
                 model="gpt-4o-mini",
@@ -116,7 +116,7 @@ class LLMHandler:
             base_prompt += "You don't know the secret word. "
         
         if previous_hints:
-            base_prompt += "\nPrevious hints:\n"
+            base_prompt += "\nHere are the hints given so far:\n"
             for player_name, hint in previous_hints:
                 player_name_mapping = {
                     "gpt-4o-mini": "Alice",
@@ -128,7 +128,7 @@ class LLMHandler:
                 human_name = player_name_mapping.get(player_name, player_name)
                 base_prompt += f"{human_name}: {hint}\n"
         
-        base_prompt += "\nGive your ONE-WORD hint:"
+        base_prompt += "\Recall the instructions and give your ONE-WORD hint:"
         return base_prompt
             
     def get_vote(self, model: LLMType, category: str, 
@@ -155,7 +155,7 @@ class LLMHandler:
         return random_vote
     def _create_vote_prompt(self, model: LLMType, category: str, word: str, 
                           all_hints: List[Tuple[LLMType, str]], is_chameleon: bool = False) -> str:
-        base_prompt = (f"The category is '{category}' and these are all possible words: "
+        base_prompt = (f"You are playing as {model.player_name}. The category is '{category}' and these are all possible words: "
                       f"{self.cards[category]}. ")
         
         if not is_chameleon:  # Changed from if word

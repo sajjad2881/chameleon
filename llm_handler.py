@@ -99,13 +99,13 @@ class LLMHandler:
 
     def get_hint(self, model: LLMType, category: str, word: str, 
                  previous_hints: List[Tuple[LLMType, str]], is_chameleon: bool) -> str:
-        print(f"\n{model.player_name} is thinking of a hint...")
+        #print(f"\n{model.player_name} is thinking of a hint...")
         if is_chameleon:
             print(f"({model.player_name} is the Chameleon and doesn't know the word)")
             
         prompt = self._create_hint_prompt(category, word, previous_hints, is_chameleon)
         hint = self._call_llm(model, prompt)
-        print(f"{model.player_name} gives hint: {hint}")
+        #print(f"{model.player_name} gives hint: {hint}")
         return hint
     def _create_hint_prompt(self, category: str, word: str, 
                            previous_hints: List[Tuple[LLMType, str]], 
@@ -128,7 +128,7 @@ class LLMHandler:
             
     def get_vote(self, model: LLMType, category: str, 
                  all_hints: List[Tuple[LLMType, str]], word: str = None) -> LLMType:
-        print(f"\n{model.player_name} is considering who might be the Chameleon...")
+        #print(f"\n{model.player_name} is considering who might be the Chameleon...")
         
         is_chameleon = (word is None)  # Determine if this player is the Chameleon
         prompt = self._create_vote_prompt(model, category, word, all_hints, is_chameleon)
@@ -142,7 +142,7 @@ class LLMHandler:
         name_to_model = {t.player_name.lower(): t for t in LLMType}
         if sanitized_vote.lower() in name_to_model:
             voted_player = name_to_model[sanitized_vote.lower()]
-            print(f"{model.player_name} votes for {voted_player.player_name}")
+            #print(f"{model.player_name} votes for {voted_player.player_name}")
             return voted_player
         
         random_vote = random.choice([p for p in LLMType if p != model])  # Don't vote for self

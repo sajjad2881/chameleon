@@ -21,6 +21,7 @@ def main():
             "times_identified": stat.times_identified,
             "correct_guesses": stat.correct_guesses,
             "correct_votes": stat.correct_votes,
+            "times_falsely_accused": stat.times_falsely_accused
         }
     
     with open(stats_file, 'w') as f:

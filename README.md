@@ -80,6 +80,13 @@ The game tracks various statistics for each AI player:
 - Times identified when Chameleon
 - Correct word guesses
 - Correct votes for Chameleon
+- Times falsely accused as Chameleon
+
+These metrics help analyze:
+- How well each AI plays as the Chameleon
+- How good they are at detecting the Chameleon
+- How "suspicious" their hints appear to other players
+- Their overall effectiveness in the game
 
 ## Contributing
 
@@ -146,3 +153,52 @@ CLAUDE_OPUS = ModelConfig("anthropic", "claude-3-opus-20240229", "Frank")
 ```
 
 Note: When adding new models, ensure you have the necessary API access and update your API keys in `config.py`. 
+
+## Game Logs
+
+The game generates two types of log files:
+
+### 1. Statistics File (`chameleon_stats_[timestamp].json`)
+Tracks aggregate statistics for each AI player:
+- Times played as Chameleon
+- Times identified when Chameleon
+- Correct word guesses
+- Correct votes for Chameleon
+
+### 2. Detailed Game Log (`chameleon_detailed_log_[timestamp].json`)
+Provides a detailed record of each round:
+```json
+{
+  "timestamp": "2024-03-14T15:30:45.123456",
+  "category": "Movies",
+  "word": "Jaws",
+  "chameleon": "Alice",
+  "player_hints": [
+    {"Bob": "ocean"},
+    {"Charlie": "swimming"},
+    {"David": "teeth"},
+    {"Eve": "beach"},
+    {"Alice": "water"}
+  ],
+  "initial_votes": {
+    "Alice": "Bob",
+    "Bob": "Alice",
+    "Charlie": "Alice",
+    "David": "Alice",
+    "Eve": "Bob"
+  },
+  "tie_break_votes": null,
+  "final_suspect": "Alice",
+  "chameleon_guess": "Titanic",
+  "winner": null,
+  "was_chameleon_caught": true,
+  "did_chameleon_guess_correctly": false
+}
+```
+
+These logs can be used for:
+- Analyzing AI behavior and strategies
+- Evaluating model performance
+- Understanding voting patterns
+- Identifying successful Chameleon tactics
+  

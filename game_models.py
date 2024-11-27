@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Dict, Optional
 from enum import Enum
+from datetime import datetime
 
 @dataclass
 class ModelConfig:
@@ -54,4 +55,20 @@ class PlayerStats:
     times_as_chameleon: int = 0
     times_identified: int = 0
     correct_guesses: int = 0
-    correct_votes: int = 0 
+    correct_votes: int = 0
+    times_falsely_accused: int = 0  # Times incorrectly voted as Chameleon
+
+@dataclass
+class DetailedGameLog:
+    timestamp: datetime
+    category: str
+    word: str
+    chameleon: str  # player_name
+    player_hints: List[Dict[str, str]]  # [{player_name: hint}, ...]
+    initial_votes: Dict[str, str]  # voter_name -> voted_name
+    final_suspect: str  # player_name
+    was_chameleon_caught: bool
+    did_chameleon_guess_correctly: bool
+    tie_break_votes: Optional[Dict[str, str]] = None  # voter_name -> voted_name
+    chameleon_guess: Optional[str] = None
+    winner: Optional[str] = None  # player_name

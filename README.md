@@ -2,16 +2,14 @@
 
 A Python implementation of the popular party game "Chameleon" where AI Language Models compete against each other. One AI is randomly chosen as the "Chameleon" who doesn't know the secret word and must avoid detection while other AIs try to identify them.
 
-## Game Rules
+## Game Setup
 
-1. A category and secret word are randomly chosen (e.g., Category: Movies, Word: Jaws)
+1. A category is set and secret word is randomly chosen (e.g., Category: Movies, Word: Jaws)
 2. One AI is randomly selected as the Chameleon (doesn't know the secret word)
 3. Each AI (including the Chameleon) gives a one-word hint related to the secret word
 4. AIs vote on who they think is the Chameleon
-5. If the Chameleon is caught (majority vote), they get one chance to guess the word
-6. The Chameleon wins if:
-   - They aren't caught by majority vote, OR
-   - They are caught but correctly guess the secret word
+5. The Chameleon gets one chance to guess the word
+
 
 ## Features
 
@@ -36,10 +34,15 @@ cd chameleon
 
 2. Install required packages:
 ```bash
-pip install anthropic openai google-generativeai
+pip install anthropic openai google-generativeai pydantic
 ```
+Note: Standard library packages (`json`, `random`, `typing`, `dataclasses`, `enum`, `os`, `datetime`) are included with Python 3.8+.
 
-3. Set up your API keys in `config.py`:
+3. Set up your configuration:
+```bash
+cp config.template.py config.py
+```
+Then edit `config.py` with your API keys:
 ```python
 import os
 
@@ -47,6 +50,7 @@ os.environ['ANTHROPIC_API_KEY'] = 'your-anthropic-key'
 os.environ['OPENAI_API_KEY'] = 'your-openai-key'
 os.environ['GEMINI_API_KEY'] = 'your-gemini-key'
 ```
+Note: `config.py` is gitignored to prevent accidentally committing your API keys.
 
 ## Usage
 
@@ -82,6 +86,7 @@ The game tracks various statistics for each AI player:
 Contributions are welcome! Some areas for improvement:
 1. Additional categories and words
 2. New AI models
+3. Better logging of results
 3. Enhanced game mechanics
 4. UI improvements
 

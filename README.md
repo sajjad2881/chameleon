@@ -28,7 +28,7 @@ A Python implementation of the popular party game "Chameleon" where AI Language 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/chameleon.git
+git clone https://github.com/sajjad2881/chameleon.git
 cd chameleon
 ```
 
@@ -101,4 +101,48 @@ MIT License - feel free to use and modify as needed.
 
 ## Note
 
-This is an experimental project showcasing AI language models' capabilities in a game setting. API usage may incur costs. 
+This is an experimental project showcasing AI language models' capabilities in a game setting. API usage may incur costs.
+
+## Modifying or Adding Models
+
+The game uses different AI models that can be easily modified or extended. All model configurations are centralized in `game_models.py` under the `LLMType` enum:
+
+```python
+class LLMType(Enum):
+    # OpenAI Models
+    GPT4_MINI = ModelConfig("openai", "gpt-4o-mini", "Alice")
+    O1_MINI = ModelConfig("openai", "o1-mini", "Bob")
+    
+    # Anthropic Models
+    CLAUDE_SONNET = ModelConfig("anthropic", "claude-3-5-sonnet-latest", "Charlie")
+    CLAUDE_HAIKU = ModelConfig("anthropic", "claude-3-5-haiku-latest", "David")
+    
+    # Google Models
+    GEMINI_FLASH = ModelConfig("google", "gemini-1.5-flash", "Eve")
+```
+
+### Changing Models
+
+To use a different model:
+1. Find the model you want to change in `LLMType`
+2. Update the `model_name` parameter to the new model identifier
+3. Ensure you have API access to the new model
+
+Example - switching to GPT-4 Turbo:
+```python
+GPT4_MINI = ModelConfig("openai", "gpt-4-turbo-preview", "Alice")
+```
+
+### Adding New Models
+
+To add a new AI player:
+1. Add a new entry to the `LLMType` enum
+2. Specify the provider, model name, and player name
+3. Update the model handling in `llm_handler.py` if it's a new provider
+
+Example - adding Claude 3 Opus:
+```python
+CLAUDE_OPUS = ModelConfig("anthropic", "claude-3-opus-20240229", "Frank")
+```
+
+Note: When adding new models, ensure you have the necessary API access and update your API keys in `config.py`. 

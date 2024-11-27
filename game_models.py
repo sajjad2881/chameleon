@@ -2,23 +2,35 @@ from dataclasses import dataclass
 from typing import List, Dict, Optional
 from enum import Enum
 
+@dataclass
+class ModelConfig:
+    provider: str  # 'openai', 'anthropic', or 'google'
+    model_name: str  # The actual model identifier used in API calls
+    player_name: str  # The human-readable name in the game (Alice, Bob, etc.)
+
 class LLMType(Enum):
-    GPT4_MINI = "gpt-4o-mini"
-    O1_MINI = "o1-mini"
-    CLAUDE_SONNET = "claude-3-5-sonnet-latest"
-    CLAUDE_HAIKU = "claude-3-5-haiku-latest"
-    GEMINI_FLASH = "gemini-1.5-flash"
+    # OpenAI Models
+    GPT4_MINI = ModelConfig("openai", "gpt-4o-mini", "Alice")
+    O1_MINI = ModelConfig("openai", "o1-mini", "Bob")
+    
+    # Anthropic Models
+    CLAUDE_SONNET = ModelConfig("anthropic", "claude-3-5-sonnet-latest", "Charlie")
+    CLAUDE_HAIKU = ModelConfig("anthropic", "claude-3-5-haiku-latest", "David")
+    
+    # Google Models
+    GEMINI_FLASH = ModelConfig("google", "gemini-1.5-flash", "Eve")
+
+    @property
+    def provider(self) -> str:
+        return self.value.provider
+
+    @property
+    def model_name(self) -> str:
+        return self.value.model_name
 
     @property
     def player_name(self) -> str:
-        name_mapping = {
-            "gpt-4o-mini": "Alice",
-            "o1-mini": "Bob",
-            "claude-3-5-sonnet-latest": "Charlie",
-            "claude-3-5-haiku-latest": "David",
-            "gemini-1.5-flash": "Eve"
-        }
-        return name_mapping[self.value]
+        return self.value.player_name
 
 @dataclass
 class GameTurn:

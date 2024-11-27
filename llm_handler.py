@@ -63,9 +63,9 @@ class LLMHandler:
     def _call_llm(self, model: LLMType, prompt: str) -> str:
         """Central method for all LLM API calls."""
         try:
-            if model in [LLMType.GPT4_MINI, LLMType.O1_MINI]:
+            if model.provider == "openai":
                 response = self.openai_client.chat.completions.create(
-                    model=model.value,
+                    model=model.model_name,
                     messages=[
                         {"role": "assistant", "content": SYSTEM_PROMPT},
                         {"role": "user", "content": prompt}
@@ -73,22 +73,25 @@ class LLMHandler:
                 )
                 return response.choices[0].message.content.strip()
                 
-            elif model in [LLMType.CLAUDE_SONNET, LLMType.CLAUDE_HAIKU]:
+            elif model.provider == "anthropic":
                 response = self.anthropic_client.messages.create(
-                    model=model.value,
+                    model=model.model_name,
                     max_tokens=500,  # Only needed for Anthropic
                     system=SYSTEM_PROMPT,
                     messages=[{"role": "user", "content": prompt}]
                 )
                 return response.content[0].text.strip()
                 
-            else:  # Gemini
+            elif model.provider == "google":
                 gemini = genai.GenerativeModel(
-                    model_name="gemini-1.5-flash",
+                    model_name=model.model_name,
                     system_instruction=SYSTEM_PROMPT
                 )
                 response = gemini.generate_content(prompt)
                 return response.text.strip()
+            
+            else:
+                raise ValueError(f"Unsupported model provider: {model.provider}")
                 
         except Exception as e:
             print(f"Error calling {model.player_name}: {e}")

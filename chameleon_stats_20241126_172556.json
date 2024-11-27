@@ -1,0 +1,32 @@
+{
+    "Alice": {
+        "times_as_chameleon": 0,
+        "times_identified": 0,
+        "correct_guesses": 0,
+        "correct_votes": 5
+    },
+    "Bob": {
+        "times_as_chameleon": 2,
+        "times_identified": 1,
+        "correct_guesses": 1,
+        "correct_votes": 7
+    },
+    "Charlie": {
+        "times_as_chameleon": 2,
+        "times_identified": 1,
+        "correct_guesses": 1,
+        "correct_votes": 9
+    },
+    "David": {
+        "times_as_chameleon": 7,
+        "times_identified": 2,
+        "correct_guesses": 2,
+        "correct_votes": 3
+    },
+    "Eve": {
+        "times_as_chameleon": 2,
+        "times_identified": 2,
+        "correct_guesses": 0,
+        "correct_votes": 3
+    }
+}

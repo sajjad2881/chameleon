@@ -12,18 +12,24 @@ class ChameleonGame:
         self.game_log = []
 
     def play_tournament(self, rounds_per_category: int = 2):
+        round_number = 0
         for category, words in self.cards.items():
             print(f"\nPlaying category: {category}")
             for round_num in range(rounds_per_category):
                 print(f"\nRound {round_num + 1}")
                 word = random.choice(words)
                 chameleon = random.choice(self.players)
+                
+                # Create player order with systematic shift plus randomization
                 player_order = self.players.copy()
-                random.shuffle(player_order)
+                shift = round_number % len(player_order)  # Systematic shift based on round number
+                player_order = player_order[shift:] + player_order[:shift]  # Shift the order
+                random.shuffle(player_order)  # Then randomize
                 
                 round = self.play_round(category, word, chameleon, player_order)
                 self.game_log.append(round)
                 self._update_stats(round)
+                round_number += 1
 
     def play_round(self, category: str, word: str, 
                    chameleon: LLMType, player_order: List[LLMType]) -> GameRound:
@@ -44,7 +50,7 @@ class ChameleonGame:
             turn = GameTurn(player=player, turn_number=turn_num, 
                           hint=hint, is_chameleon=is_chameleon)
             turns.append(turn)
-            previous_hints.append((player.value, hint))
+            previous_hints.append((player, hint))
             print(f"{player.player_name} hint: {hint}")
 
         # Initial voting phase
@@ -158,8 +164,10 @@ class ChameleonGame:
         votes_for_chameleon = sum(1 for v in round.votes.values() if v == round.chameleon)
         if votes_for_chameleon > len(self.players) / 2:  # Majority voted correctly
             self.stats[round.chameleon].times_identified += 1
-            if round.chameleon_guess and round.chameleon_guess.lower() == round.word.lower():
-                self.stats[round.chameleon].correct_guesses += 1
+        
+        # Track correct guesses regardless of whether chameleon was identified
+        if round.chameleon_guess and round.chameleon_guess.lower() == round.word.lower():
+            self.stats[round.chameleon].correct_guesses += 1
         
         # Update voting stats
         for voter, vote in round.votes.items():

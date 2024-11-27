@@ -10,7 +10,7 @@ def main():
     stats_file = f"chameleon_stats_{timestamp}.json"
     
     game = ChameleonGame(cards)
-    game.play_tournament(rounds_per_category=2)
+    game.play_tournament(rounds_per_category=1)
     
     # Save statistics to file
     stats = game.get_final_stats()

@@ -95,7 +95,7 @@ class LLMHandler:
             return str(e)
 
     def get_hint(self, model: LLMType, category: str, word: str, 
-                 previous_hints: List[tuple[str, str]], is_chameleon: bool) -> str:
+                 previous_hints: List[Tuple[LLMType, str]], is_chameleon: bool) -> str:
         print(f"\n{model.player_name} is thinking of a hint...")
         if is_chameleon:
             print(f"({model.player_name} is the Chameleon and doesn't know the word)")
@@ -105,30 +105,22 @@ class LLMHandler:
         print(f"{model.player_name} gives hint: {hint}")
         return hint
     def _create_hint_prompt(self, category: str, word: str, 
-                           previous_hints: List[Tuple[str, str]], 
+                           previous_hints: List[Tuple[LLMType, str]], 
                            is_chameleon: bool = False) -> str:
         base_prompt = (f"The category is '{category}' and these are all possible words: "
                       f"{self.cards[category]}. ")
         
-        if not is_chameleon:  # Changed from if word
+        if not is_chameleon:
             base_prompt += f"The secret word is '{word}'. "
         else:
             base_prompt += "You don't know the secret word. "
         
         if previous_hints:
             base_prompt += "\nHere are the hints given so far:\n"
-            for player_name, hint in previous_hints:
-                player_name_mapping = {
-                    "gpt-4o-mini": "Alice",
-                    "o1-mini": "Bob",  # Fixed from o1-preview
-                    "claude-3-5-sonnet-latest": "Charlie",
-                    "claude-3-5-haiku-latest": "David",
-                    "gemini-1.5-flash": "Eve"
-                }
-                human_name = player_name_mapping.get(player_name, player_name)
-                base_prompt += f"{human_name}: {hint}\n"
+            for player, hint in previous_hints:
+                base_prompt += f"{player.player_name}: {hint}\n"
         
-        base_prompt += "\Recall the instructions and give your ONE-WORD hint:"
+        base_prompt += "\nRecall the instructions and give your ONE-WORD hint:"
         return base_prompt
             
     def get_vote(self, model: LLMType, category: str, 

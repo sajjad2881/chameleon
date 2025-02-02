@@ -208,7 +208,7 @@ class LLMHandler:
 
     def get_chameleon_guess(self, model: LLMType, category: str, 
                            all_hints: List[Tuple[LLMType, str]]) -> str:
-        print(f"\n{model.player_name} (Chameleon) is trying to guess the word...")
+        #print(f"\n{model.player_name} (Chameleon) is trying to guess the word...")
         self.current_model = model  # Set current model before creating prompt
         prompt = self._create_chameleon_guess_prompt(model, category, all_hints)
         guess = self._call_llm(model, prompt)

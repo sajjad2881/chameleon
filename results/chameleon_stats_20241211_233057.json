@@ -1,0 +1,37 @@
+{
+    "gpt-4o-mini": {
+        "times_as_chameleon": 33,
+        "times_identified": 6,
+        "correct_guesses": 28,
+        "correct_votes": 75,
+        "times_falsely_accused": 6
+    },
+    "o1-mini": {
+        "times_as_chameleon": 33,
+        "times_identified": 8,
+        "correct_guesses": 29,
+        "correct_votes": 89,
+        "times_falsely_accused": 28
+    },
+    "claude-3-5-sonnet-latest": {
+        "times_as_chameleon": 27,
+        "times_identified": 3,
+        "correct_guesses": 24,
+        "correct_votes": 94,
+        "times_falsely_accused": 16
+    },
+    "claude-3-5-haiku-latest": {
+        "times_as_chameleon": 33,
+        "times_identified": 6,
+        "correct_guesses": 21,
+        "correct_votes": 32,
+        "times_falsely_accused": 3
+    },
+    "gemini-1.5-flash": {
+        "times_as_chameleon": 34,
+        "times_identified": 25,
+        "correct_guesses": 0,
+        "correct_votes": 16,
+        "times_falsely_accused": 25
+    }
+}
